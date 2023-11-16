@@ -22,13 +22,7 @@ class UserViewSet(ModelViewSet):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        queryset = User.objects.all()
-        flag = self.request.query_params.get('flag', None)
-
-        if flag is not None:
-            queryset = User.objects.filter(id=self.request.user.id)
-
-        return queryset
-
+        return User.objects.filter(id=self.request.user.id)
+        # return User.objects.all()
 
 

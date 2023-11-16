@@ -22,15 +22,8 @@ class TicketFilter(FilterSet):
 class TicketViewSet(ModelViewSet):
     serializer_class = TicketSerializer
     filterset_class = TicketFilter
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        # if self.request.user.role == Role.DEV:
-        #     return Ticket.objects.filter(user__role=Role.DEV, assignee=self.request.user)
-        # else:
             return Ticket.objects.all()
 
-# FILTER_STRING_MODELS = ['exact', 'icontains', 'istartswith', 'iendswith']
-# FILTER_NUMBER_MODELS = ['exact', 'lt', 'lte', 'gt', 'gte']
-# FILTER_EXACT_MODELS = ['exact']
-# FILTER_TIME_MODELS = ['exact', 'year', 'month', 'day', 'hour', 'minute', 'second', 'range']
